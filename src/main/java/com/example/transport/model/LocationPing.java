@@ -23,6 +23,7 @@ public class LocationPing {
 
     private double latitude;
     private double longitude;
+    private String locationName;
     private Long timestampEpochSeconds;
 
     private Double speed;         // meters/second, nullable
@@ -31,7 +32,7 @@ public class LocationPing {
 
     public LocationPing(Truck truck, double latitude, double longitude,
                         Long timestampEpochSeconds, Double speed,
-                        Double horizontalAccuracy, Double batteryLevel) {
+                        Double horizontalAccuracy, Double batteryLevel, String locationName) {
         this.truck = truck;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -39,6 +40,7 @@ public class LocationPing {
         this.speed = speed;
         this.horizontalAccuracy = horizontalAccuracy;
         this.batteryLevel = batteryLevel;
+        this.locationName = locationName;
     }
 
 }

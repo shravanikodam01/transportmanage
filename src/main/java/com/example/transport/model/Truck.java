@@ -20,15 +20,17 @@ public class Truck {
 
     private String name;
     private String licensePlate;
+    private String lastLocationName;
 
     // Cached last-known position for quick lookups without scanning history
     private Double lastLatitude;
     private Double lastLongitude;
     private Long lastTimestampEpochSeconds;
 
-    public Truck(String id, String name, String licensePlate) {
+    public Truck(String id, String name, String licensePlate, String lastLocationName) {
         this.id = id;
         this.name = name;
         this.licensePlate = licensePlate;
+        this.lastLocationName = lastLocationName;
     }
 }
