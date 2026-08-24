@@ -1,3 +1,8 @@
 runtime: java17
 instance_class: F1
 entrypoint: java -jar target/transport-0.0.1-SNAPSHOT.jar
+
+env_variables:
+  SPRING_DATASOURCE_URL: "__SPRING_DATASOURCE_URL__"
+  SPRING_DATASOURCE_USERNAME: "__SPRING_DATASOURCE_USERNAME__"
+  SPRING_DATASOURCE_PASSWORD: "__SPRING_DATASOURCE_PASSWORD__"
