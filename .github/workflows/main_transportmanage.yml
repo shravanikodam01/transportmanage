@@ -35,10 +35,12 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
 
       - name: Inject secrets into app.yaml
+        env:
+          SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
+          SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
         run: |
-          sed -i "s|__SPRING_DATASOURCE_URL__|${{ secrets.SPRING_DATASOURCE_URL }}|g" app.yaml
-          sed -i "s|__SPRING_DATASOURCE_USERNAME__|${{ secrets.SPRING_DATASOURCE_USERNAME }}|g" app.yaml
-          sed -i "s|__SPRING_DATASOURCE_PASSWORD__|${{ secrets.SPRING_DATASOURCE_PASSWORD }}|g" app.yaml
+          envsubst < app.yaml > app.yaml.tmp && mv app.yaml.tmp app.yaml
 
       - name: Deploy to App Engine
         run: |
