@@ -6,6 +6,7 @@ import com.example.transport.model.LocationPing;
 import com.example.transport.model.Truck;
 import com.example.transport.repository.LocationPingRepository;
 import com.example.transport.repository.TruckRepository;
+import com.example.transport.util.GeoUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -20,16 +21,18 @@ public class LocationService {
     // movement instead of ping frequency -- a truck idling at a red light
     // won't trigger a new lookup every 2 minutes.
     private static final double MIN_DISTANCE_METERS_FOR_REGEOCODE = 100.0;
-    private static final double EARTH_RADIUS_METERS = 6_371_000.0;
 
     private final TruckRepository truckRepository;
     private final LocationPingRepository locationPingRepository;
     private final GeocodingService geocodingService;
+    private final TripService tripService;
 
-    public LocationService(TruckRepository truckRepository, LocationPingRepository locationPingRepository, GeocodingService geocodingService) {
+    public LocationService(TruckRepository truckRepository, LocationPingRepository locationPingRepository,
+                            GeocodingService geocodingService, TripService tripService) {
         this.truckRepository = truckRepository;
         this.locationPingRepository = locationPingRepository;
         this.geocodingService = geocodingService;
+        this.tripService = tripService;
     }
 
     /**
@@ -71,6 +74,10 @@ public class LocationService {
                 truck.setLastLatitude(latitude);
                 truck.setLastLongitude(longitude);
                 truck.setLastTimestampEpochSeconds(epochSeconds);
+
+                // Only check arrival against the truck's freshest position, not every
+                // point in the batch -- avoids acting on stale/out-of-order pings.
+                tripService.checkArrival(truck, latitude, longitude);
             }
         }
         truckRepository.save(truck);
@@ -101,21 +108,9 @@ public class LocationService {
 
     /**
      * Great-circle distance between two lat/lng points, in meters.
-     * Standard Haversine formula -- accurate enough for "has this truck
-     * moved a meaningful amount" without needing a mapping library.
      */
     private double haversineDistanceMeters(double lat1, double lon1, double lat2, double lon2) {
-        double lat1Rad = Math.toRadians(lat1);
-        double lat2Rad = Math.toRadians(lat2);
-        double deltaLat = Math.toRadians(lat2 - lat1);
-        double deltaLon = Math.toRadians(lon2 - lon1);
-
-        double a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2)
-                + Math.cos(lat1Rad) * Math.cos(lat2Rad)
-                * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        return EARTH_RADIUS_METERS * c;
+        return GeoUtils.haversineDistanceMeters(lat1, lon1, lat2, lon2);
     }
 
     public List<LocationPing> getHistory(String truckId) {
