@@ -1,0 +1,57 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-09-27T17:13:22.930-05:00  INFO 7916 --- [transport] [           main] c.e.transport.TransportApplication       : Starting TransportApplication using Java 17.0.12 with PID 7916 (C:\Projects\Transport\transport\transport\target\classes started by shrav in C:\Projects\Transport\transport\transport)
+2026-09-27T17:13:22.944-05:00  INFO 7916 --- [transport] [           main] c.e.transport.TransportApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-09-27T17:13:23.824-05:00  INFO 7916 --- [transport] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-27T17:13:23.890-05:00  INFO 7916 --- [transport] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 6 JPA repository interfaces.
+2026-09-27T17:13:24.453-05:00  INFO 7916 --- [transport] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-09-27T17:13:24.477-05:00  INFO 7916 --- [transport] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-27T17:13:24.477-05:00  INFO 7916 --- [transport] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-09-27T17:13:24.565-05:00  INFO 7916 --- [transport] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1565 ms
+2026-09-27T17:13:24.783-05:00  INFO 7916 --- [transport] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-27T17:13:24.838-05:00  INFO 7916 --- [transport] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-09-27T17:13:25.298-05:00  INFO 7916 --- [transport] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-27T17:13:25.347-05:00  INFO 7916 --- [transport] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-27T17:13:26.606-05:00  INFO 7916 --- [transport] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7846913f
+2026-09-27T17:13:26.610-05:00  INFO 7916 --- [transport] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-27T17:13:26.742-05:00  WARN 7916 --- [transport] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-09-27T17:13:26.996-05:00  INFO 7916 --- [transport] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-tiny-term-axmgswz1-pooler.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.6
+	Default catalog/schema: neondb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-27T17:13:28.096-05:00  INFO 7916 --- [transport] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-27T17:13:28.629-05:00  INFO 7916 --- [transport] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-27T17:13:28.727-05:00  INFO 7916 --- [transport] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-27T17:13:29.156-05:00  WARN 7916 --- [transport] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-27T17:13:29.654-05:00  INFO 7916 --- [transport] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-09-27T17:13:29.660-05:00  INFO 7916 --- [transport] [           main] c.e.transport.TransportApplication       : Started TransportApplication in 7.162 seconds (process running for 7.673)
+2026-09-27T17:13:29.660-05:00  WARN 7916 --- [transport] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-09-27T17:13:29.660-05:00  WARN 7916 --- [transport] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-09-27T17:13:37.398-05:00  INFO 7916 --- [transport] [0.0-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-27T17:13:37.398-05:00  INFO 7916 --- [transport] [0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-27T17:13:37.398-05:00  INFO 7916 --- [transport] [0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+Hibernate: select count(*) from trucks t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.last_latitude,t1_0.last_location_name,t1_0.last_longitude,t1_0.last_timestamp_epoch_seconds,t1_0.license_plate,t1_0.name from trucks t1_0 where t1_0.id=?
+Hibernate: insert into trucks (last_latitude,last_location_name,last_longitude,last_timestamp_epoch_seconds,license_plate,name,id) values (?,?,?,?,?,?,?)
+Hibernate: select count(*) from trucks t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.last_latitude,t1_0.last_location_name,t1_0.last_longitude,t1_0.last_timestamp_epoch_seconds,t1_0.license_plate,t1_0.name from trucks t1_0
+Hibernate: select to1_0.id,to1_0.cargo_description,to1_0.client_id,to1_0.created_at_epoch_seconds,to1_0.destination_latitude,to1_0.destination_longitude,to1_0.destination_name,to1_0.estimated_cost,to1_0.order_number,to1_0.origin_latitude,to1_0.origin_longitude,to1_0.origin_name,to1_0.quantity,to1_0.requested_delivery_at_epoch_seconds,to1_0.requested_pickup_at_epoch_seconds,to1_0.status from transport_orders to1_0 where to1_0.id=?
+Hibernate: select t1_0.id,t1_0.actual_cost,t1_0.arrival_notified_at_epoch_seconds,t1_0.arrival_radius_meters,t1_0.arrived_at_epoch_seconds,t1_0.completed_at_epoch_seconds,t1_0.destination_latitude,t1_0.destination_longitude,t1_0.destination_name,t1_0.driver_id,t1_0.started_at_epoch_seconds,t1_0.status,t1_0.transport_order_id,t1_0.truck_id from trips t1_0 where t1_0.status in (?,?,?)
+Hibernate: select t1_0.id,t1_0.last_latitude,t1_0.last_location_name,t1_0.last_longitude,t1_0.last_timestamp_epoch_seconds,t1_0.license_plate,t1_0.name from trucks t1_0
+Hibernate: select t1_0.id,t1_0.last_latitude,t1_0.last_location_name,t1_0.last_longitude,t1_0.last_timestamp_epoch_seconds,t1_0.license_plate,t1_0.name from trucks t1_0
